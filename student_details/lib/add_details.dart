@@ -103,9 +103,7 @@ class _AddPageState extends State<AddPage> {
                         height: 10,
                       ),
                       ElevatedButton(
-                          onPressed: () {
-                            addstudent();
-                          },
+                          onPressed: () {},
                           style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all(
                                   const Color.fromARGB(255, 25, 89, 122))),
@@ -125,15 +123,5 @@ class _AddPageState extends State<AddPage> {
         ],
       ),
     );
-  }
-
-  void addstudent() {
-    final data = {
-      "name": "Ameer",
-      "class": "10 A",
-      "phone": 8589952006,
-      "address": "Moonnamkuttil"
-    };
-    Student.add(data);
   }
 }

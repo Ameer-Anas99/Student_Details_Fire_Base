@@ -33,6 +33,7 @@ dependencies:
   firebase_core: ^2.25.4
   flutter:
     sdk: flutter
+  flutter_slidable: ^3.0.1
 
 dev_dependencies:
 

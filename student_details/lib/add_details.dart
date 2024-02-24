@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -10,6 +11,9 @@ class AddPage extends StatefulWidget {
 }
 
 class _AddPageState extends State<AddPage> {
+  final CollectionReference Student =
+      FirebaseFirestore.instance.collection("Student");
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,18 +76,9 @@ class _AddPageState extends State<AddPage> {
                         padding: EdgeInsets.all(8.0),
                         child: TextField(
                           decoration: InputDecoration(
-                              border: OutlineInputBorder(), label: Text("age")),
-                          maxLength: 3,
-                        ),
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: TextField(
-                          decoration: InputDecoration(
                               border: OutlineInputBorder(),
-                              label: Text("Roll No")),
-                          keyboardType: TextInputType.number,
-                          maxLength: 3,
+                              label: Text("Class")),
+                          maxLength: 4,
                         ),
                       ),
                       const Padding(
@@ -108,7 +103,9 @@ class _AddPageState extends State<AddPage> {
                         height: 10,
                       ),
                       ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            addstudent();
+                          },
                           style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all(
                                   const Color.fromARGB(255, 25, 89, 122))),
@@ -128,5 +125,15 @@ class _AddPageState extends State<AddPage> {
         ],
       ),
     );
+  }
+
+  void addstudent() {
+    final data = {
+      "name": "Ameer",
+      "class": "10 A",
+      "phone": 8589952006,
+      "address": "Moonnamkuttil"
+    };
+    Student.add(data);
   }
 }

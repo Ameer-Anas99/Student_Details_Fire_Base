@@ -1,7 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class AddPage extends StatefulWidget {
   const AddPage({super.key});
@@ -13,6 +11,11 @@ class AddPage extends StatefulWidget {
 class _AddPageState extends State<AddPage> {
   final CollectionReference Student =
       FirebaseFirestore.instance.collection("Student");
+
+  TextEditingController studentName = TextEditingController();
+  TextEditingController studentClass = TextEditingController();
+  TextEditingController studentPhoneNo = TextEditingController();
+  TextEditingController studentAddress = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -64,26 +67,29 @@ class _AddPageState extends State<AddPage> {
                       const SizedBox(
                         height: 20,
                       ),
-                      const Padding(
+                      Padding(
                         padding: EdgeInsets.all(8.0),
                         child: TextField(
+                          controller: studentName,
                           decoration: InputDecoration(
                               border: OutlineInputBorder(),
                               label: Text("Student Name")),
                         ),
                       ),
-                      const Padding(
+                      Padding(
                         padding: EdgeInsets.all(8.0),
                         child: TextField(
+                          controller: studentClass,
                           decoration: InputDecoration(
                               border: OutlineInputBorder(),
                               label: Text("Class")),
                           maxLength: 4,
                         ),
                       ),
-                      const Padding(
+                      Padding(
                         padding: EdgeInsets.all(8.0),
                         child: TextField(
+                          controller: studentPhoneNo,
                           decoration: InputDecoration(
                               border: OutlineInputBorder(),
                               label: Text("Phone No")),
@@ -91,9 +97,10 @@ class _AddPageState extends State<AddPage> {
                           maxLength: 10,
                         ),
                       ),
-                      const Padding(
+                      Padding(
                         padding: EdgeInsets.all(8.0),
                         child: TextField(
+                          controller: studentAddress,
                           decoration: InputDecoration(
                               border: OutlineInputBorder(),
                               label: Text("Address")),
@@ -103,7 +110,9 @@ class _AddPageState extends State<AddPage> {
                         height: 10,
                       ),
                       ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            addstudent();
+                          },
                           style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all(
                                   const Color.fromARGB(255, 25, 89, 122))),
@@ -123,5 +132,15 @@ class _AddPageState extends State<AddPage> {
         ],
       ),
     );
+  }
+
+  void addstudent() {
+    final data = {
+      "name": "Ameer",
+      "class": "10 A",
+      "phone": 8589952006,
+      "address": "Moonnamkuttil"
+    };
+    Student.add(data);
   }
 }

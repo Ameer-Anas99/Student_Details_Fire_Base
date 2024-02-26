@@ -81,7 +81,7 @@ class _HomePageState extends State<HomePage> {
                           width: 50,
                           color: Colors.transparent,
                           child: Text(
-                            StudentSnap["class"],
+                            StudentSnap["division"],
                             style: const TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.w400),
                           ),

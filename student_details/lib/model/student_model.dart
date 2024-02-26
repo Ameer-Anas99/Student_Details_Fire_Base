@@ -1,28 +1,26 @@
 class StudentModel {
   String? name;
-  String? phone;
-  String? address;
-  String? division;
+  String? rollno;
+  String? age;
   String? image;
 
-  StudentModel(
-      {this.name, this.phone, this.address, this.division, required this.image});
+  StudentModel({this.name, this.rollno, this.age, required this.image});
 
   factory StudentModel.fromJson(Map<String, dynamic> json) {
     return StudentModel(
-        image: json["image"],
-        name: json["name"] as String,
-        phone: json["phone"],
-        address: json["address"],
-        division: json["division"]);
+      image: json['image'],
+      name: json['name'] as String?,
+      rollno: json['rollno'] as String?,
+      age: json['class'] as String?,
+    );
   }
-  Map<String,dynamic> tojson(){
-    return{
-      "image" : image,
-      "name" : name,
-      "phone" : phone,
-      "address" : address,
-      division
-    }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'image': image,
+      'name': name,
+      'rollno': rollno,
+      'class': age,
+    };
   }
 }

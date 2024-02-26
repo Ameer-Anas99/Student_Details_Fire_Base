@@ -10,6 +10,7 @@ import 'package:student_details/view/add_details.dart';
 import 'package:student_details/view/edit_details.dart';
 
 class HomePage extends StatelessWidget {
+  // ignore: use_key_in_widget_constructors
   const HomePage({Key? key});
 
   @override
@@ -67,7 +68,7 @@ class HomePage extends StatelessWidget {
                                       ),
                                     ),
                                     Text(
-                                      data?.age?.toUpperCase() ?? 'N/A',
+                                      data?.division?.toUpperCase() ?? 'N/A',
                                       style: const TextStyle(
                                         color: Colors.grey,
                                       ),
@@ -92,7 +93,7 @@ class HomePage extends StatelessWidget {
                                           id,
                                           StudentModel(
                                             image: '',
-                                            age: '',
+                                            division: '',
                                             name: '',
                                             rollno: '',
                                           ),

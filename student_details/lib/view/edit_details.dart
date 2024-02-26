@@ -18,10 +18,8 @@ class EditScreen extends StatefulWidget {
 
 class _EditScreenState extends State<EditScreen> {
   TextEditingController rollnoController = TextEditingController();
-
   TextEditingController nameController = TextEditingController();
-
-  TextEditingController ageController = TextEditingController();
+  TextEditingController divisioncontroller = TextEditingController();
   TextEditingController imageController = TextEditingController();
 
   @override
@@ -29,7 +27,7 @@ class _EditScreenState extends State<EditScreen> {
     super.initState();
 
     nameController.text = widget.student.name ?? '';
-    ageController.text = widget.student.age ?? '';
+    divisioncontroller.text = widget.student.division ?? '';
     rollnoController.text = widget.student.rollno ?? "";
   }
 
@@ -48,9 +46,6 @@ class _EditScreenState extends State<EditScreen> {
             children: [
               CircleAvatar(
                 radius: 70,
-                backgroundImage:
-                    Provider.of<ImageProviderr>(context).selectedImage ??
-                        AssetImage("assets/default img.jpg"),
                 child: IconButton(
                     onPressed: () {
                       _showImageOptions(context);
@@ -70,7 +65,7 @@ class _EditScreenState extends State<EditScreen> {
                 height: 10,
               ),
               TextFormField(
-                  controller: ageController,
+                  controller: divisioncontroller,
                   decoration: InputDecoration(
                       hintText: "class",
                       border: OutlineInputBorder(
@@ -101,15 +96,13 @@ class _EditScreenState extends State<EditScreen> {
     );
   }
 
-  editStudent(
-    BuildContext context,
-  ) async {
+  void editStudent(BuildContext context) async {
     final pro = Provider.of<StudentProvider>(context, listen: false);
 
     try {
       final editedname = nameController.text;
       final editedrollno = rollnoController.text;
-      final editedage = ageController.text;
+      final editedage = divisioncontroller.text;
       final editedimage = imageController.text;
 
       // Update image URL in Firestore
@@ -117,7 +110,7 @@ class _EditScreenState extends State<EditScreen> {
       final updatedstudent = StudentModel(
         name: editedname,
         rollno: editedrollno,
-        age: editedage,
+        division: editedage,
         image: editedimage,
       );
 
@@ -126,7 +119,7 @@ class _EditScreenState extends State<EditScreen> {
 
       Navigator.pop(context);
     } catch (e) {
-      // Handle exceptions appropriately (e.g., show an error message)
+      // Handle exceptions appropriately
       print("Error updating student: $e");
     }
   }

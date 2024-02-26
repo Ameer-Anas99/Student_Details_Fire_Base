@@ -13,7 +13,7 @@ class AddScreen extends StatelessWidget {
     super.key,
   });
   TextEditingController namecontroller = TextEditingController();
-  TextEditingController agecontroller = TextEditingController();
+  TextEditingController divisioncontroller = TextEditingController();
   TextEditingController rollnocontroller = TextEditingController();
 
   @override
@@ -42,7 +42,7 @@ class AddScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 TextFormField(
-                  controller: agecontroller,
+                  controller: divisioncontroller,
                   obscureText: true,
                   decoration: const InputDecoration(
                     labelText: 'Class',
@@ -129,14 +129,14 @@ class AddScreen extends StatelessWidget {
     final pro = Provider.of<StudentProvider>(context, listen: false);
     final provider = Provider.of<ImageProviderr>(context, listen: false);
     final name = namecontroller.text;
-    final age = agecontroller.text;
+    final division = divisioncontroller.text;
     final rollno = rollnocontroller;
 
     await pro.imageAdder(File(provider.selectedImage!.path));
 
     final student = StudentModel(
       rollno: rollno.text,
-      age: age,
+      division: division,
       name: name,
       image: pro.downloadurl,
     );

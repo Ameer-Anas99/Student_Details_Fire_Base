@@ -74,7 +74,7 @@ class DetailScreen extends StatelessWidget {
                   ),
                 ),
                 subtitle: Text(
-                  student.age ?? '',
+                  student.division ?? '',
                   style: TextStyle(
                     fontSize: 16,
                   ),

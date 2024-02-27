@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:student_details/controller/image_provider.dart';
 import 'package:student_details/controller/student_provider.dart';
 import 'package:student_details/model/student_model.dart';
 

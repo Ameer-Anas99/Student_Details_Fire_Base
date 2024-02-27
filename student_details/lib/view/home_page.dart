@@ -4,7 +4,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:student_details/controller/student_provider.dart';
-import 'package:student_details/details.dart';
+import 'package:student_details/view/delete.dart';
+import 'package:student_details/view/details.dart';
 import 'package:student_details/model/student_model.dart';
 import 'package:student_details/view/add_details.dart';
 import 'package:student_details/view/edit_details.dart';
@@ -114,8 +115,12 @@ class HomePage extends StatelessWidget {
                                         Icons.delete,
                                         color: Colors.red,
                                       ),
-                                      onPressed: () {
-                                        value.deleteStudent(id);
+                                      onPressed: () async {
+                                        bool shouldDelete = await DeleteDialog
+                                            .showConfirmationDialog(context);
+                                        if (shouldDelete) {
+                                          value.deleteStudent(id);
+                                        }
                                       },
                                     ),
                                     IconButton(
@@ -145,21 +150,30 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ]),
-      floatingActionButton: ElevatedButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => AddScreen(),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.all(30.0),
+        child: Align(
+          alignment: Alignment.bottomCenter,
+          child: ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => AddScreen(),
+                ),
+              );
+            },
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all<Color>(Colors.cyan),
             ),
-          );
-        },
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all<Color>(Colors.purple),
-        ),
-        child: const Text(
-          'Add',
-          style: TextStyle(color: Colors.white),
+            child: const Text(
+              'Add',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 23,
+                  fontWeight: FontWeight.w500),
+            ),
+          ),
         ),
       ),
     );

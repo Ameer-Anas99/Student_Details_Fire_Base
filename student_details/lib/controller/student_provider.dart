@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:student_details/model/student_model.dart';
 import 'package:student_details/services/service.dart';
 
@@ -29,7 +30,7 @@ class StudentProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  imageAdder(image) async {
+  imageAdder(image, ImageSource camera) async {
     //for the image saving path  .ref().child('images'); refrence and the folder name image
     Reference folder = _firebaseService.storage.ref().child('images');
     Reference images = folder.child("$uniquename.jpg");

@@ -43,7 +43,6 @@ class AddScreen extends StatelessWidget {
                 const SizedBox(height: 16),
                 TextFormField(
                   controller: divisioncontroller,
-                  obscureText: true,
                   decoration: const InputDecoration(
                     labelText: 'Class',
                     border: OutlineInputBorder(),
@@ -54,7 +53,7 @@ class AddScreen extends StatelessWidget {
                 ),
                 TextFormField(
                   controller: rollnocontroller,
-                  obscureText: true,
+                  keyboardType: TextInputType.number,
                   decoration: const InputDecoration(
                     labelText: 'Roll no',
                     border: OutlineInputBorder(),

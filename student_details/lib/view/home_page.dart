@@ -17,7 +17,9 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 51, 51, 51),
       appBar: AppBar(
+        backgroundColor: Colors.blueGrey,
         automaticallyImplyLeading: false,
         title: const Text(
           "Student Details",
@@ -150,30 +152,23 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ]),
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.all(30.0),
-        child: Align(
-          alignment: Alignment.bottomCenter,
-          child: ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => AddScreen(),
-                ),
-              );
-            },
-            style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all<Color>(Colors.cyan),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: ElevatedButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => AddScreen(),
             ),
-            child: const Text(
-              'Add',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 23,
-                  fontWeight: FontWeight.w500),
-            ),
-          ),
+          );
+        },
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all<Color>(Colors.cyan),
+        ),
+        child: const Text(
+          'Add',
+          style: TextStyle(
+              color: Colors.white, fontSize: 23, fontWeight: FontWeight.w500),
         ),
       ),
     );

@@ -28,6 +28,7 @@ class _EditScreenState extends State<EditScreen> {
     nameController.text = widget.student.name ?? '';
     divisioncontroller.text = widget.student.division ?? '';
     rollnoController.text = widget.student.rollno ?? "";
+    imageController.text = widget.student.image ?? '';
   }
 
   @override
